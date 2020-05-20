@@ -69,7 +69,7 @@
               this.reset();
 
               items.push(item);
-              localStorage.setItem('items', JSON.stringify(items))
+              localStorage.setItem('items', JSON.stringify(items));
               // WHAT IS PASSED TO LOCAL STORAGE IS JUST A STRING
               populateList(items, itemsList);
               console.table(items);
@@ -93,7 +93,10 @@
       // WE NEED THE STATE TO PERSIST (i.e. DONENESS NEEDS TO STAY EVEN ON REFRESH)
             function toggleDone(e) {
               if (!e.target.matches('input')) return; // skips unless it's a checkbox
-              console.log(e.target.dataset.index); 
+              const index = e.target.dataset.index;
+              items[index].done = !items[index].done; // toggles true and false
+              localStorage.setItem('items', JSON.stringify(items));
+              populateList(items, itemsList);
             }
 
             addItems.addEventListener('submit', addItem);
