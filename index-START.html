@@ -56,7 +56,7 @@
     <script>
       const addItems = document.querySelector('.add-items');
       const itemsList = document.querySelector('.plates');
-      const items = JSON.parse(localStorage.getItem(items)) || [];
+      const items = JSON.parse(localStorage.getItem('items')) || [];
 
       function addItem(e) {
         e.preventDefault();
@@ -69,7 +69,7 @@
         this.reset();
 
         items.push(item);
-        localStorage.setItem(items, JSON.stringify(items))
+        localStorage.setItem('items', JSON.stringify(items))
         // WHAT IS PASSED TO LOCAL STORAGE IS JUST A STRING
         populateList(items, itemsList);
         console.table(items);
@@ -93,7 +93,7 @@
       addItems.addEventListener('submit', addItem);
 
       populateList(items, itemsList);
-      
+
     </script>
   </body>
 </html>
